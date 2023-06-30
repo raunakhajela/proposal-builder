@@ -14,7 +14,7 @@ const people = [
   ]
    function Proposal() {
     return (
-      <div className="">
+      <div className="px-4 py-10">
         <div className="mx-auto max-w-7xl px-4 text-center lg:px-6">
           <ul
             role="list"
