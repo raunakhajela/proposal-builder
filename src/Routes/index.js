@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../views/Login";
 import Proposal from "../views/Proposals";
+import Client from "../views/Clients";
 
 
 const router = createBrowserRouter([
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
       children:[
         {
             path: "clients",
-            element: <p>Clients</p>,
+            element: <Client/>,
           },
         {
             path: "proposals",
