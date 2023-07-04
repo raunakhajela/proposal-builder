@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import dataControllers from '../../api/user'
 import countryList from '../../api/country'
-import { useNavigate } from 'react-router-dom'
-function AddClient() {
-  const navigate = useNavigate()
+
+function AddClient({onShow}) {
   const initialState = {
     first_name:"",
      last_name:"",
@@ -21,8 +20,6 @@ function AddClient() {
      notes:""
   }
   const[data,setData] = useState(initialState)
-
-
   const inputHandler = (e)=>{
     const{name,value} = e.target
     setData({...data,[name]:value})
@@ -33,7 +30,8 @@ const submitForm = (e)=>{
   e.preventDefault()
 dataControllers.CreateClient(data).then((res)=>{
  setData(initialState)
- navigate("../clients")
+ onShow()
+ 
 })
  
 

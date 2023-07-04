@@ -16,7 +16,7 @@ const ClientAll = ()=>{
          <button onClick={ClientForm} className='bg-gray-900 rounded-md p-1 px-2 m-1 text-white text-sm font-semi-bold hover:bg-gray-700'>Add Client</button> <button onClick={ClientAll} className='bg-gray-900 rounded-md p-1 px-2 m-1 text-white text-sm font-semi-bold hover:bg-gray-700'>ALL Client</button>
         </div>
         
-{client?<AddClient/>:<ClientData/>}
+{client?<AddClient onShow={() => setClient(false)} />:<ClientData/>}
     </div>
   )
 }
