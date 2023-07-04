@@ -1,5 +1,5 @@
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     UserButton,
@@ -21,6 +21,8 @@ import {
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Home from './Home';
+
+
 
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, },
@@ -44,6 +46,7 @@ function Dashboard() {
     const {pathname} = useLocation()
     console.log(pathname);
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    
 
     return (
         <>
