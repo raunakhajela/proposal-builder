@@ -8,9 +8,25 @@ const dataControllers = {
             throw error;
         }
     },
+    updateClient: async (body) => {
+        try {
+            let result = await axios.put(`clientupdate/${body._id}`,body);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
     ListClient: async () => {
         try {
-            let result = await axios.get(`clientlist`);
+            let result = await axios.get(`clientlist/`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
+    getClient: async (_id) => {
+        try {
+            let result = await axios.get(`client/${_id}`);
             return result;
         } catch (error) {
             throw error;

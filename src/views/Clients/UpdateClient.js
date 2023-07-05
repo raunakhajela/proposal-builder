@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import dataControllers from '../../api/user'
 import countryList from '../../api/country'
+import { useNavigate, useParams, } from 'react-router-dom'
 
-function AddClient({onShow}) {
+function UpdateClient() {
+const navigate = useNavigate()
+const prams = useParams()
   const initialState = {
     first_name:"",
      last_name:"",
@@ -28,18 +31,43 @@ function AddClient({onShow}) {
 
 const submitForm = (e)=>{
   e.preventDefault()
-dataControllers.CreateClient(data).then((res)=>{
+dataControllers.updateClient(data).then((res)=>{
  setData(initialState)
- onShow()
- 
+ navigate("../clients")
 })
- 
+
 
 }
+useEffect(()=>{
+const prm_id = prams.id
+dataControllers.getClient(prm_id).then((res)=>{
+    console.log(res.data.data);
+    const{first_name,last_name,business_name,email,role,telephone,currency,proposal_language,address,city,state,country,web_url,notes,_id}= res.data.data
+    setData({
+       first_name,
+       last_name,
+       business_name,
+       email,
+       role,
+       telephone,
+       currency,
+       proposal_language,
+       address,
+       city,
+       state,
+       country,
+       web_url,
+       notes,
+       _id
 
+
+    })
+})
+// console.log();
+},[])
 
   return (
-    <div className='px-6 pb-4 '>
+    <div className='px-6 pb-4'>
      <form onSubmit={submitForm}>
       <div className="space-y-12">
      
@@ -55,6 +83,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   onChange={inputHandler}
                   name="first_name"
                   id="first-name"
+                  value={data.first_name}
                   autoComplete="given-name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
                 />
@@ -70,6 +99,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   name="last_name"
                   id="last-name"
+                  value={data.last_name}
                   onChange={inputHandler}
                   autoComplete="family-name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -85,6 +115,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   name="business_name"
                   id="business_name"
+                  value={data.business_name}
                   onChange={inputHandler}
                   autoComplete="business_name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -101,6 +132,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   id="email"
                   name="email"
                   onChange={inputHandler}
+                  value={data.email}
                   type="email"
                   autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -116,6 +148,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   id="role"
                   name="role"
                   onChange={inputHandler}
+                  value={data.role}
                   type="text"
                   autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -131,6 +164,7 @@ dataControllers.CreateClient(data).then((res)=>{
                 <input
                   id="telephone"
                   name="telephone"
+                  value={data.telephone}
                   onChange={inputHandler}
                   type="text"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -147,6 +181,7 @@ dataControllers.CreateClient(data).then((res)=>{
                 <select
                   id="currency"
                   name="currency"
+                  value={data.currency}
                    onChange={inputHandler}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
@@ -165,6 +200,7 @@ dataControllers.CreateClient(data).then((res)=>{
                 <select
                   id="Proposal"
                   name="proposal_language"
+                  value={data.proposal_language}
                    onChange={inputHandler}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
@@ -185,6 +221,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   name="address"
                   onChange={inputHandler}
+                  value={data.address}
                   id="street-address"
                   autoComplete="street-address"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -201,6 +238,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   name="city"
                   onChange={inputHandler}
+                  value={data.city}
                   id="city"
                   autoComplete="address-level2"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -217,7 +255,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   name="state"
                   onChange={inputHandler}
-
+                  value={data.state}
                   id="region"
                   autoComplete="address-level1"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -233,6 +271,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   id="country"
                   name="country"
                    onChange={inputHandler}
+                   value={data.country}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                     <option value="">Select</option>
@@ -258,6 +297,7 @@ dataControllers.CreateClient(data).then((res)=>{
           type="text"
           name="web_url"
           onChange={inputHandler}
+          value={data.web_url}
           id="company-website"
           className="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
           placeholder="www.example.com"
@@ -274,6 +314,7 @@ dataControllers.CreateClient(data).then((res)=>{
                   type="text"
                   onChange={inputHandler}
                   name="notes"
+                  value={data.notes}
                   id="postal-code"
                   autoComplete="postal-code"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
@@ -294,7 +335,7 @@ dataControllers.CreateClient(data).then((res)=>{
           type="submit"
           className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
         >
-          Save
+          Update
         </button>
       </div>
     </form>
@@ -302,4 +343,4 @@ dataControllers.CreateClient(data).then((res)=>{
   )
 }
 
-export default AddClient
+export default UpdateClient
