@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {DocumentTextIcon,TrashIcon,PencilSquareIcon} from '@heroicons/react/24/outline'
 import dataControllers from '../../api/user'
+import { NavLink } from 'react-router-dom'
 function ClientData() {
 const[clientData,setClientData] = useState([])
 const deleteClient=(_id)=>{
-const confirm = window.confirm("kjkjjk")
+const confirm = window.confirm("Are you sure you want to delete this Client")
 if(confirm){
   dataControllers.deleteClient(_id).then((res)=>{
     getClientList()
@@ -59,7 +60,8 @@ const getClientList=()=>{
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                      <div className='flex gap-4'>
                      <DocumentTextIcon className='w-5 h-5 cursor-pointer'/> 
-                     <PencilSquareIcon className='w-5 h-5 cursor-pointer'/> 
+
+                     <NavLink to={`../client/${client._id}`} ><PencilSquareIcon className='w-5 h-5 cursor-pointer'/></NavLink>
                      <TrashIcon onClick={()=>deleteClient(client._id)} className='w-5 h-5 text-rose-400 cursor-pointer'/>
                      </div>
                     </td>

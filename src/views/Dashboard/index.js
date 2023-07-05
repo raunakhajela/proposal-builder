@@ -1,5 +1,5 @@
 
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     UserButton,
@@ -18,7 +18,7 @@ import {
     UsersIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import {  MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Home from './Home';
 
@@ -44,7 +44,6 @@ function classNames(...classes) {
 
 function Dashboard() {
     const {pathname} = useLocation()
-    console.log(pathname);
     const [sidebarOpen, setSidebarOpen] = useState(false)
     
 
