@@ -41,14 +41,14 @@ const dataControllers = {
         }
     },
    
-    // addUserList: async (data) => {
-    //     try {
-    //         let result = await securedApi.post(`/api/add-user`, data);
-    //         return result;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // },
+    addproposal: async (data) => {
+        try {
+            let result = await axios.post(`proposaladd`, data);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
     // editUser: async (data) => {
     //     try {
     //         let result = await securedApi.post(`/api/edit-user`, data);
