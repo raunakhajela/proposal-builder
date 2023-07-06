@@ -1,5 +1,8 @@
 
 import {DocumentPlusIcon} from  '@heroicons/react/24/outline'
+import { useEffect, useState } from 'react'
+import NewProposal from './addProposal'
+import dataControllers from '../../api/user'
 
 const people = [
     {
@@ -13,30 +16,38 @@ const people = [
     // More people...
   ]
    function Proposal() {
+    const[addproposal,setProposal] = useState(false)
+
+    useEffect(()=>{
+     
+    })
     return (
       <div className="px-4 py-10">
-        <div className="mx-auto max-w-7xl px-4 text-center lg:px-6">
+       
+        {addproposal?<> <NewProposal onshow = {()=>setProposal(false)}/></>:<><div className="mx-auto max-w-7xl px-4 text-center lg:px-6">
           <ul
             role="list"
             className="mx-auto   grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8"
           >
             {people.map((person) => (
               <li key={person.name} className=" rounded-xl border border-slate-300">
-               <div className="bg-blue-400 rounded-t-xl py-10 flex justify-center">
-                <DocumentPlusIcon className='h-10 w-10 text-white'/>
+               <div className="bg-slate-800 rounded-t-xl py-10 flex justify-center">
+                <DocumentPlusIcon onClick={()=>setProposal(true)} className='h-10 w-10 text-white cursor-pointer'/>
                </div>
                <div className="bg-slate-400 py-3">
                Create A Blank Proposal 
                </div>
-               <div className="h-10 text-left px-2"> 
-                 <p className='text-sm'>Created:18 jun 2023 </p>
+               <div className="h-auto  px-3 py-3 text-left"> 
+                 <p className='text-sm'><strong className='text-md'>Created</strong> : 18 jun 2023 </p>
+                 <p className='text-sm'><strong>Sections included</strong> : The element ul has an implicit role of list. Defining this explicitly </p>
                </div>
                 
               
               </li>
             ))}
           </ul>
-        </div>
+        </div></>}
+        
       </div>
     )
   }
