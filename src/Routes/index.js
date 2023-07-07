@@ -3,6 +3,7 @@ import Login from "../views/Login";
 import Proposal from "../views/Proposals";
 import Client from "../views/Clients";
 import UpdateClient from "../views/Clients/UpdateClient";
+import NewSection from "../views/Proposals/addSection";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
             path: "proposals",
             element: <Proposal/>,
+        },
+        {
+            path: "proposal/:id",
+            element:<NewSection/>,
         },
 
       ]
