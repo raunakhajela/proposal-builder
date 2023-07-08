@@ -57,6 +57,14 @@ const dataControllers = {
             throw error;
         }
     },
+    updateProposal: async (_id,body) => {
+        try {
+            let result = await axios.put(`proposalupdate/${_id}`,body);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
     // editUser: async (data) => {
     //     try {
     //         let result = await securedApi.post(`/api/edit-user`, data);

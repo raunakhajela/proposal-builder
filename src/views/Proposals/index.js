@@ -35,10 +35,10 @@ import { NavLink } from 'react-router-dom'
                 
               
               </li>
-              {data&&data.map((p)=>(
-                 <li className=" rounded-xl border border-slate-300">
+              {data&&data.map((p,index)=>(
+                 <li key={index} className=" rounded-xl border border-slate-300">
                  <div className="bg-slate-800 rounded-t-xl py-10 flex justify-center">
-                <NavLink to={`../proposal/:${1233}`}><DocumentPlusIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
+                <NavLink to={`../proposal/${p._id}`}><DocumentPlusIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
                  </div>
                  <div className="bg-slate-400 py-3">
                  {p.title} 
