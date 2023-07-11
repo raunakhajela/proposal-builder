@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import dataControllers from "../../api/user";
+import { dateString } from "../../Utils";
 
 function NewProposal({onshow}) {
     const initialState = {
@@ -10,11 +11,11 @@ function NewProposal({onshow}) {
             exdate:""     
     }
     const [data, setData] = useState(initialState);
-    const [startDate, setStartDate] = useState();
+    const [startDate, setStartDate] = useState(Date());
     const[open,setOpen] = useState(false)
     const[clientData,setClientData] = useState([])
 
-    
+    console.log(startDate);
 
     const inputHandler = (e)=>{
         const{name,value} = e.target
@@ -149,7 +150,7 @@ function NewProposal({onshow}) {
             Click to add Expiry Date
             </label>{' '}
             <span id="comments-description" className="text-gray-500">
-              <span className="sr-only">Click to add Expiry Date </span>
+              <span className="sr-only">Click to add Expiry Date  </span>
             </span>
           </div>
         
