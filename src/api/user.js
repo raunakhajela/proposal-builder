@@ -49,6 +49,30 @@ const dataControllers = {
             throw error;
         }
     },
+    ProposalList: async () => {
+        try {
+            let result = await axios.get(`proposallist`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
+    updateProposal: async (_id,body) => {
+        try {
+            let result = await axios.put(`proposalupdate/${_id}`,body);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
+    priviewProposal: async (_id) => {
+        try {
+            let result = await axios.get(`/proposalpriveiw/${_id}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
     // editUser: async (data) => {
     //     try {
     //         let result = await securedApi.post(`/api/edit-user`, data);

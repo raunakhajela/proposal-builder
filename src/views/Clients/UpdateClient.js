@@ -38,8 +38,8 @@ dataControllers.updateClient(data).then((res)=>{
 
 
 }
-useEffect(()=>{
 const prm_id = prams.id
+useEffect(()=>{
 dataControllers.getClient(prm_id).then((res)=>{
     console.log(res.data.data);
     const{first_name,last_name,business_name,email,role,telephone,currency,proposal_language,address,city,state,country,web_url,notes,_id}= res.data.data
