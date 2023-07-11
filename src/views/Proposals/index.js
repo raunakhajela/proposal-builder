@@ -1,5 +1,5 @@
 
-import {DocumentPlusIcon} from  '@heroicons/react/24/outline'
+import {DocumentPlusIcon,GlobeAmericasIcon} from  '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import NewProposal from './addProposal'
 import dataControllers from '../../api/user'
@@ -22,7 +22,8 @@ import { NavLink } from 'react-router-dom'
           >
            
               <li className=" rounded-xl border border-slate-300">
-               <div className="bg-slate-600 rounded-t-xl py-10 flex justify-center">
+               <div className="bg-slate-600 rounded-t-xl  py-10 flex justify-center">
+               
                 <DocumentPlusIcon onClick={()=>setProposal(true)} className='h-10 w-10 text-white cursor-pointer'/>
                </div>
                <div className="bg-slate-400 py-3">
@@ -37,7 +38,11 @@ import { NavLink } from 'react-router-dom'
               </li>
               {data&&data.map((p,index)=>(
                  <li key={index} className=" rounded-xl border border-slate-300">
-                 <div className="bg-slate-800 rounded-t-xl py-10 flex justify-center">
+                 <div className="bg-slate-800 rounded-t-xl py-10 relative flex justify-center">
+                 <div className=' absolute top-0 right-0 p-4 hover:text-white'>
+                  <NavLink to ={`../preview/${p._id}`} target='blanck_page'><GlobeAmericasIcon className='h-5 w-5 cursor-pointer' /></NavLink>
+               
+                </div>
                 <NavLink to={`../proposal/${p._id}`}><DocumentPlusIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
                  </div>
                  <div className="bg-slate-400 py-3">

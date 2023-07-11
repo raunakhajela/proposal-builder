@@ -65,6 +65,14 @@ const dataControllers = {
             throw error;
         }
     },
+    priviewProposal: async (_id) => {
+        try {
+            let result = await axios.get(`/proposalpriveiw/${_id}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
     // editUser: async (data) => {
     //     try {
     //         let result = await securedApi.post(`/api/edit-user`, data);
