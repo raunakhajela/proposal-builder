@@ -39,8 +39,8 @@ import { NavLink } from 'react-router-dom'
               {data&&data.map((p,index)=>(
                  <li key={index} className=" rounded-xl border border-slate-300">
                  <div className="bg-slate-800 rounded-t-xl py-10 relative flex justify-center">
-                 <div className=' absolute top-0 right-0 p-4 hover:text-white'>
-                  <NavLink to ={`../preview/${p._id}`} target='blanck_page'><GlobeAmericasIcon className='h-5 w-5 cursor-pointer' /></NavLink>
+                 <div className=' absolute top-0 right-0 p-4 '>
+                  <NavLink to ={`../preview/${p._id}`} target='blanck_page'><GlobeAmericasIcon className='h-5 w-5 cursor-pointer text-slate-400 hover:text-white' /></NavLink>
                
                 </div>
                 <NavLink to={`../proposal/${p._id}`}><DocumentPlusIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
