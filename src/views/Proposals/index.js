@@ -1,9 +1,9 @@
 
-import {DocumentPlusIcon,GlobeAmericasIcon} from  '@heroicons/react/24/outline'
+import {DocumentPlusIcon,DocumentTextIcon,GlobeAmericasIcon} from  '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import NewProposal from './addProposal'
 import dataControllers from '../../api/user'
-import { dateString } from '../../Utils'
+import { SectionsIncluded, dateString } from '../../Utils'
 import { NavLink } from 'react-router-dom'
    function Proposal() {
     const[addproposal,setProposal] = useState(false)
@@ -43,14 +43,14 @@ import { NavLink } from 'react-router-dom'
                   <NavLink to ={`../preview/${p._id}`} target='blanck_page'><GlobeAmericasIcon className='h-5 w-5 cursor-pointer text-slate-400 hover:text-white' /></NavLink>
                
                 </div>
-                <NavLink to={`../proposal/${p._id}`}><DocumentPlusIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
+                <NavLink to={`../proposal/${p._id}`}><DocumentTextIcon  className='h-10 w-10 text-white cursor-pointer'/></NavLink>  
                  </div>
-                 <div className="bg-slate-400 py-3">
+                 <div className="bg-slate-400 py-3 uppercase">
                  {p.title} 
                  </div>
                  <div className="h-auto  px-3 py-3 text-left"> 
                    <p className='text-sm'><strong className='text-md'>Created</strong> : {dateString(p.exdate)} </p>
-                   <p className='text-sm'><strong>Sections included</strong> : The element ul has an implicit role of list. Defining this explicitly </p>
+                   <p className='text-sm'><strong>Sections included</strong> : <span className='text-sm'>{SectionsIncluded(p.proposal)}</span></p>
                  </div>
                   
                 

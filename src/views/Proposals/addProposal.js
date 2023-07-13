@@ -8,7 +8,8 @@ function NewProposal({onshow}) {
     const initialState = {
             title:"",
             clientid:"",
-            exdate:""     
+            exdate:"",
+            proposal:""    
     }
     const [data, setData] = useState(initialState);
     const [startDate, setStartDate] = useState();

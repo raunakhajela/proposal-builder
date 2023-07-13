@@ -20,3 +20,8 @@ const m_date = str.split(" ")[2]
 const y = str.split(" ")[3]
 return `${d}  , ${m_date} ${m} , ${y}`
 }
+
+exports.SectionsIncluded = (str)=>{
+const result = str?str.map((s,i)=>((i==1||i==2)?" , ":" ")+s.title):"Not Sections" 
+return result
+}
