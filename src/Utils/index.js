@@ -1,4 +1,5 @@
 exports.dateString = (str)=>{
+
 let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 let data = str.split("-")
 let mfixed = data[1].split("")[1]
@@ -9,4 +10,18 @@ const result = {
 }
 const {d,m,y} = result
 return `${d}-${m}-${y}`
+}
+
+
+exports.dateTostring = (str)=>{
+const d = str.split(" ")[0]
+const m = str.split(" ")[1]
+const m_date = str.split(" ")[2]
+const y = str.split(" ")[3]
+return `${d}  , ${m_date} ${m} , ${y}`
+}
+
+exports.SectionsIncluded = (str)=>{
+const result = str?str.map((s,i)=>((i==1||i==2)?" , ":" ")+s.title):"Not Sections" 
+return result
 }

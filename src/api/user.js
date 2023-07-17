@@ -40,6 +40,14 @@ const dataControllers = {
             throw error;
         }
     },
+    getClientDetails: async (_id) => {
+        try {
+            let result = await axios.get(`getclientdetails/${_id}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    },
    
     addproposal: async (data) => {
         try {

@@ -2,16 +2,17 @@ import { useEffect, useState } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import dataControllers from "../../api/user";
-import { dateString } from "../../Utils";
+import { dateString, dateTostring } from "../../Utils";
 
 function NewProposal({onshow}) {
     const initialState = {
             title:"",
             clientid:"",
-            exdate:""     
+            exdate:"",
+            proposal:""    
     }
     const [data, setData] = useState(initialState);
-    const [startDate, setStartDate] = useState(Date());
+    const [startDate, setStartDate] = useState();
     const[open,setOpen] = useState(false)
     const[clientData,setClientData] = useState([])
 
@@ -22,7 +23,6 @@ function NewProposal({onshow}) {
         setData({...data,[name]:value})
         console.log(data);
       }
- 
     const submitForm = (e)=>{
     e.preventDefault()
      dataControllers.addproposal(data).then(()=>{
@@ -126,31 +126,30 @@ function NewProposal({onshow}) {
         <div className="relative flex items-start">
           <div className="flex h-6 items-center">
             
-            {startDate?<><input
+          <input
               id="comments"
               aria-describedby="comments-description"
               name="comments"
               type="checkbox"
-              onChange={()=>setOpen(true)}
-              checked
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-blue-600"
-            /></>:<>
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              type="checkbox"
-              onChange={()=>setOpen(true)}
+              onChange={(e)=>{
+                if(e.target.checked){
+                  setOpen(true)
+                  setData({...data,exdate:startDate})
+                }
+                else{
+                  setOpen(false)
+                  setData({...data,exdate:""})
+                }
+              }}
               className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-blue-600"
             />
-            </>}
           </div>
           <div className="ml-3 text-sm leading-6">
             <label htmlFor="comments" className="font-medium text-gray-900">
             Click to add Expiry Date
             </label>{' '}
             <span id="comments-description" className="text-gray-500">
-              <span className="sr-only">Click to add Expiry Date  </span>
+              <span className="sr-only">Click to add Expiry Date  </span>{startDate? dateTostring(startDate.toString()):"no"}
             </span>
           </div>
         

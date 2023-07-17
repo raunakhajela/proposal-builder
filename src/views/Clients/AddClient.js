@@ -28,11 +28,18 @@ function AddClient({onShow}) {
 
 const submitForm = (e)=>{
   e.preventDefault()
-dataControllers.CreateClient(data).then((res)=>{
- setData(initialState)
- onShow()
- 
-})
+const{first_name} = data
+if(first_name!=""){
+  dataControllers.CreateClient(data).then((res)=>{
+    setData(initialState)
+    onShow()
+    
+   })
+  
+}
+else{
+  alert("Please fill out this field")  
+}
  
 
 }
@@ -47,7 +54,7 @@ dataControllers.CreateClient(data).then((res)=>{
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-6">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                First name <span className='text-gray-400'>[Used in client correspondence]</span>
+                First name <span className='required'>*</span><span className='text-gray-400'>[Used in client correspondence]</span>
               </label>
               <div className="mt-2">
                 <input
@@ -63,7 +70,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-6">
               <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-                Last name <span className='text-gray-400'>[Don't forget to add last name]</span>
+                Last name <span className='required'>*</span> <span className='text-gray-400'>[Don't forget to add last name]</span>
               </label>
               <div className="mt-2">
                 <input
@@ -78,7 +85,7 @@ dataControllers.CreateClient(data).then((res)=>{
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="business_name" className="block text-sm font-medium leading-6 text-gray-900">
-                Businss Name  <span className='text-gray-400'>[Don't forget to add Businss name]</span>
+                Businss Name <span className='required'>*</span>  <span className='text-gray-400'>[Don't forget to add Businss name]</span>
               </label>
               <div className="mt-2">
                 <input
@@ -94,7 +101,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-6">
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
+                Email address <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -109,7 +116,7 @@ dataControllers.CreateClient(data).then((res)=>{
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="role" className="block text-sm font-medium leading-6 text-gray-900">
-                Role
+                Role <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -125,7 +132,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-6">
               <label htmlFor="telephone" className="block text-sm font-medium leading-6 text-gray-900">
-                Telephone
+                Telephone <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -141,7 +148,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-3">
               <label htmlFor="currency" className="block text-sm font-medium leading-6 text-gray-900">
-                Currency{data.currency}
+                Currency <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <select
@@ -159,7 +166,7 @@ dataControllers.CreateClient(data).then((res)=>{
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="Proposal" className="block text-sm font-medium leading-6 text-gray-900">
-              Proposal language
+              Proposal language <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <select
@@ -178,7 +185,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="col-span-full">
               <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
-                Street address
+                Street address <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -194,7 +201,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-3 sm:col-start-1">
               <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
-                City
+                City <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -210,7 +217,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-3">
               <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900">
-                State / Province
+                State / Province <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input
@@ -226,7 +233,7 @@ dataControllers.CreateClient(data).then((res)=>{
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
-              Country
+              Country <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <select
@@ -248,7 +255,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-6">
             <label htmlFor="company-website" className="block text-sm font-medium leading-6 text-gray-900">
-        Company Website
+        Company Website <span className='required'>*</span>
       </label>
       <div className="mt-2 flex rounded-md shadow-sm">
         <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 px-3 text-gray-500 sm:text-sm">
@@ -267,7 +274,7 @@ dataControllers.CreateClient(data).then((res)=>{
 
             <div className="sm:col-span-6">
               <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-900">
-                Notes
+                Notes <span className='required'>*</span>
               </label>
               <div className="mt-2">
                 <input

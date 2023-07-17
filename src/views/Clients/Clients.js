@@ -58,8 +58,10 @@ const getClientList=()=>{
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{client.email}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                      <div className='flex gap-4'>
-                     <DocumentTextIcon className='w-5 h-5 cursor-pointer'/> 
 
+                     
+
+                     <NavLink to={`../clientdeaitls/${client._id}`} ><DocumentTextIcon className='w-5 h-5 cursor-pointer'/> </NavLink>
                      <NavLink to={`../client/${client._id}`} ><PencilSquareIcon className='w-5 h-5 cursor-pointer'/></NavLink>
                      <TrashIcon onClick={()=>deleteClient(client._id)} className='w-5 h-5 text-rose-400 cursor-pointer'/>
                      </div>

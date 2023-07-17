@@ -19,3 +19,6 @@ code {
 .active { 
   @apply bg-blue-600 text-white font-semibold
 }
+.required{ 
+  @apply text-rose-600 font-semibold
+}

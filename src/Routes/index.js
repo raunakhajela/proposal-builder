@@ -5,6 +5,7 @@ import Client from "../views/Clients";
 import UpdateClient from "../views/Clients/UpdateClient";
 import NewSection from "../views/Proposals/addSection";
 import Preview from "../views/PreviewPage";
+import ViewClient from "../views/Clients/viewClient";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         {
             path: "client/:id",
             element: <UpdateClient/>,
+        },
+        {
+            path: "clientdeaitls/:id",
+            element: <ViewClient/>,
         },
         {
             path: "proposals",
