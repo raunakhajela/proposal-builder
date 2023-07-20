@@ -11,7 +11,7 @@ function Login() {
   return (
     <>
       <SignedIn>
-        <Dashboard/>
+        <Dashboard />
       </SignedIn>
       <SignedOut>
         <RedirectToSignIn />
