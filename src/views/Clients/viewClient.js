@@ -128,7 +128,7 @@ useEffect(()=>{
   </tbody>
     </table>
     
-    </>:"no"}
+    </>:"No Found Proposal"}
     </div>
       </div>
    </div>

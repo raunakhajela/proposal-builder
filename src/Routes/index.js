@@ -6,6 +6,7 @@ import UpdateClient from "../views/Clients/UpdateClient";
 import NewSection from "../views/Proposals/addSection";
 import Preview from "../views/PreviewPage";
 import ViewClient from "../views/Clients/viewClient";
+import Updateproposal from "../views/Proposals/Updateproposal";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         {
             path: "proposal/:id",
             element:<NewSection/>,
+        },
+        {
+            path: "proposalupdate",
+            element:<Updateproposal/>,
         },
 
       ]

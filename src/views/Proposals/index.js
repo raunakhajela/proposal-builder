@@ -8,15 +8,21 @@ import { NavLink } from 'react-router-dom'
    function Proposal() {
     const[addproposal,setProposal] = useState(false)
     const[data,setdata] = useState([])
+    const getproposalList = ()=>{
+      dataControllers.ProposalList().then((res)=>{
+        setdata(res.data.proposal);
+       })
+    }
     useEffect(()=>{
-     dataControllers.ProposalList().then((res)=>{
-      setdata(res.data.proposal);
-     })
+      getproposalList();
     },[])
     return (
       <div className="px-4 py-10">
 
-        {addproposal?<> <NewProposal onshow = {()=>setProposal(false)}/></>:<><div className="mx-auto max-w-7xl px-4 text-center lg:px-6">
+        {addproposal?<> <NewProposal onshow = {()=>{
+          setProposal(false)
+          getproposalList()
+           }}/></>:<><div className="mx-auto max-w-7xl px-4 text-center lg:px-6">
           <ul
             className="mx-auto   grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8"
           >

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import dataControllers from "../../api/user";
-import { dateString, dateTostring } from "../../Utils";
+import {  dateTostring } from "../../Utils";
 
 function NewProposal({onshow}) {
     const initialState = {
@@ -149,7 +149,7 @@ function NewProposal({onshow}) {
             Click to add Expiry Date
             </label>{' '}
             <span id="comments-description" className="text-gray-500">
-              <span className="sr-only">Click to add Expiry Date  </span>{startDate? dateTostring(startDate.toString()):"no"}
+              <span className="sr-only">Click to add Expiry Date  </span>{startDate? dateTostring(startDate.toString()):"No Set Expire Date"}
             </span>
           </div>
         
