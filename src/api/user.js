@@ -2,7 +2,7 @@ import axios from './axios';
 const dataControllers = {
     CreateClient: async (body) => {
         try {
-            let result = await axios.post(`clientadd`,body);
+            let result = await axios.post(`clientadd`, body);
             return result;
         } catch (error) {
             throw error;
@@ -10,7 +10,7 @@ const dataControllers = {
     },
     updateClient: async (body) => {
         try {
-            let result = await axios.put(`clientupdate/${body._id}`,body);
+            let result = await axios.put(`clientupdate/${body._id}`, body);
             return result;
         } catch (error) {
             throw error;
@@ -48,7 +48,7 @@ const dataControllers = {
             throw error;
         }
     },
-   
+
     addproposal: async (data) => {
         try {
             let result = await axios.post(`proposaladd`, data);
@@ -65,9 +65,9 @@ const dataControllers = {
             throw error;
         }
     },
-    updateProposal: async (_id,body) => {
+    updateProposal: async (_id, body) => {
         try {
-            let result = await axios.put(`proposalupdate/${_id}`,body);
+            let result = await axios.put(`proposalupdate/${_id}`, body);
             return result;
         } catch (error) {
             throw error;
@@ -81,22 +81,6 @@ const dataControllers = {
             throw error;
         }
     },
-    // editUser: async (data) => {
-    //     try {
-    //         let result = await securedApi.post(`/api/edit-user`, data);
-    //         return result;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // },
-    // deleteUser: async (email) => {
-    //     try {
-    //         let result = await securedApi.post(`/api/delete-user`, { email });
-    //         return result;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // }
 };
 
 export default dataControllers;

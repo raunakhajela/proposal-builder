@@ -18,7 +18,7 @@ import {
     UsersIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import {  MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Home from './Home';
 
@@ -26,8 +26,8 @@ import Home from './Home';
 
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, },
-    { name: 'Proposals', href: 'proposals', icon: WalletIcon,  },
-    { name: 'Clients', href: 'clients', icon: UsersIcon,  },
+    { name: 'Proposals', href: 'proposals', icon: WalletIcon, },
+    { name: 'Clients', href: 'clients', icon: UsersIcon, },
     { name: 'Calendar', href: 'cal', icon: CalendarIcon, },
     { name: 'Documents', href: 'doc', icon: DocumentDuplicateIcon, },
     { name: 'Reports', href: 'rep', icon: ChartPieIcon, current: true },
@@ -43,10 +43,8 @@ function classNames(...classes) {
 }
 
 function Dashboard() {
-    const {pathname} = useLocation()
+    const { pathname } = useLocation()
     const [sidebarOpen, setSidebarOpen] = useState(false)
-    
-
     return (
         <>
 
@@ -139,7 +137,6 @@ function Dashboard() {
                         </div>
                     </Dialog>
                 </Transition.Root>
- 
                 {/* Static sidebar for desktop */}
                 <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
                     {/* Sidebar component, swap this element with another sidebar if you like */}
@@ -219,7 +216,7 @@ function Dashboard() {
 
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative">
-                                <UserButton />
+                                    <UserButton />
                                     <Transition
                                         as={Fragment}
                                         enter="transition ease-out duration-100"
@@ -250,10 +247,10 @@ function Dashboard() {
                     </div>
 
                     <main>
-                     
-                            {pathname==="/"?<Home/>:<Outlet/>}
-                            
-                       
+
+                        {pathname === "/" ? <Home /> : <Outlet />}
+
+
                     </main>
                 </div>
             </div>
