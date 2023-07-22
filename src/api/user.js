@@ -16,9 +16,9 @@ const dataControllers = {
             throw error;
         }
     },
-    ListClient: async () => {
+    ListClient: async (userid) => {
         try {
-            let result = await axios.get(`clientlist/`);
+            let result = await axios.get(`clientlist/${userid}`);
             return result;
         } catch (error) {
             throw error;

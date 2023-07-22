@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import dataControllers from '../../api/user'
 import countryList from '../../api/country'
+import { getUserid } from '../../utils'
 
 function AddClient({ onShow }) {
   const initialState = {
     first_name: "",
     last_name: "",
+    useridentity:getUserid(),
     email: "",
     telephone: "",
     currency: "",

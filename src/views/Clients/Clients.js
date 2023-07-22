@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { DocumentTextIcon, TrashIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
 import dataControllers from '../../api/user'
 import { NavLink } from 'react-router-dom'
+import { getUserid } from '../../utils'
 function ClientData() {
   const [clientData, setClientData] = useState([])
   const deleteClient = (_id) => {
@@ -15,8 +16,9 @@ function ClientData() {
   }
 
   const getClientList = () => {
-    dataControllers.ListClient().then((res) => {
-      setClientData(res.data.clients)
+    const userid = getUserid()
+    dataControllers.ListClient(userid).then((res) => {
+      setClientData(res.data.client)
     })
   }
 
