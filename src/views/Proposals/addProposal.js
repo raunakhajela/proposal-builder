@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import dataControllers from "../../api/user";
-import { dateTostring } from "../../utils";
+import { dateTostring, getUserid } from "../../utils";
 
 function NewProposal({ onshow }) {
   const initialState = {
     title: "",
+    useridentity:getUserid(),
     clientid: "",
     exdate: "",
     proposal: ""
@@ -40,11 +41,11 @@ function NewProposal({ onshow }) {
   }
 
   const getClientList = () => {
-    dataControllers.ListClient().then((res) => {
-      setClientData(res.data.clients)
+    dataControllers.ListClient(getUserid()).then((res) => {
+      setClientData(res.data.client)
 
     })
-    console.log(clientData);
+    
   }
 
   useEffect(() => {
