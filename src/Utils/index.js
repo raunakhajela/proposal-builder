@@ -44,3 +44,12 @@ exports.SectionsIncluded = (str) => {
     const result = str.map((s, i) => ((i === 1 || i === 2) ? " , " : " ") + s.title);
     return result;
 };
+
+
+
+// This function is get user ID global varialble.
+
+exports.getUserid = ()=>{
+    const userID =  localStorage.getItem("useridentity")
+    return userID
+}
