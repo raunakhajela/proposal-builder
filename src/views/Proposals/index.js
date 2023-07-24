@@ -3,13 +3,14 @@ import { DocumentPlusIcon, DocumentTextIcon, GlobeAmericasIcon } from '@heroicon
 import { useEffect, useState } from 'react'
 import NewProposal from './addProposal'
 import dataControllers from '../../api/user'
-import { SectionsIncluded, dateString } from '../../utils'
+import { SectionsIncluded, dateString, getUserid } from '../../utils'
 import { NavLink } from 'react-router-dom'
 function Proposal() {
   const [addproposal, setProposal] = useState(false)
   const [data, setdata] = useState([])
   const getproposalList = () => {
-    dataControllers.ProposalList().then((res) => {
+  const userid = getUserid()
+    dataControllers.ProposalList(userid).then((res) => {
       setdata(res.data.proposal);
     })
   }
@@ -37,6 +38,7 @@ function Proposal() {
             </div>
             <div className="h-auto  px-3 py-3 text-left">
               <p className='text-sm'><strong className='text-md'>Created</strong> :  </p>
+              <p className='text-sm'><strong className='text-md'>Expire</strong> : </p>
               <p className='text-sm'><strong>Sections included</strong> : </p>
             </div>
 
