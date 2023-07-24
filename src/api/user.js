@@ -57,9 +57,9 @@ const dataControllers = {
             throw error;
         }
     },
-    ProposalList: async () => {
+    ProposalList: async (userid) => {
         try {
-            let result = await axios.get(`proposallist`);
+            let result = await axios.get(`proposallist/${userid}`);
             return result;
         } catch (error) {
             throw error;

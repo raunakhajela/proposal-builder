@@ -41,7 +41,8 @@ function NewProposal({ onshow }) {
   }
 
   const getClientList = () => {
-    dataControllers.ListClient(getUserid()).then((res) => {
+    const userid = getUserid()
+    dataControllers.ListClient(userid).then((res) => {
       setClientData(res.data.client)
 
     })

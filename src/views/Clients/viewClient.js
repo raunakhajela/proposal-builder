@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import dataControllers from '../../api/user'
-import { dateString } from '../../utils'
+
 
 function ViewClient() {
   const [clientdata, setClientData] = useState({})
@@ -16,9 +16,10 @@ function ViewClient() {
       setProposalData(res.data.proposals);
     })
   }
+
   useEffect(() => {
     getClient()
-  }, [])
+  })
 
   return (
     <div className='p-4'>
